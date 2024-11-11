@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 28350354f0437e246b1bd0f383cfba1f
+timeCreated: 1503935101
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102704
+  packageName: Universal WebGL Template
+  packageVersion: 1.3.0
+  assetPath: Assets/WebGLTemplates/Universal/TemplateData/img/progressEmpty.png
+  uploadId: 389582

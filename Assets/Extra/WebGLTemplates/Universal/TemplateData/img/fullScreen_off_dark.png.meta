@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2140d7bccb62032488a23d291f39a77c
+timeCreated: 1535705247
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102704
+  packageName: Universal WebGL Template
+  packageVersion: 1.3.0
+  assetPath: Assets/WebGLTemplates/Universal/TemplateData/img/fullScreen_off_dark.png
+  uploadId: 389582

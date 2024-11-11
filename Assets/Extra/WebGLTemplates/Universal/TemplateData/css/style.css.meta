@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c876aba26b9fa940a800f48e2b58470
+timeCreated: 1503663089
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102704
+  packageName: Universal WebGL Template
+  packageVersion: 1.3.0
+  assetPath: Assets/WebGLTemplates/Universal/TemplateData/css/style.css
+  uploadId: 389582
