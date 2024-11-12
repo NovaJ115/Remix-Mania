@@ -9,6 +9,7 @@ public class StatRandomizer : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject darknessScreen;
     public GameObject theCamera;
+    public GameObject jumpAmountIndicator;
     
     [Header("Min/Max Values")]
     public int minSpeed;
@@ -205,6 +206,7 @@ public class StatRandomizer : MonoBehaviour
                 upsideDownTxt.text = ("Upside-Down Screen: On");
                 upsideDownTxt.color = Color.green;
                 theCamera.transform.Rotate(0, 180f, 180f);
+                jumpAmountIndicator.transform.Rotate(0, 180f, 180f);
             }
             else
             {
