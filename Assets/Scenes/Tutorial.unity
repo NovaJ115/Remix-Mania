@@ -664,6 +664,50 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7696028, y: 0.14028239}
   m_EdgeRadius: 0
+--- !u!1 &164875644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164875645}
+  - component: {fileID: 164875646}
+  m_Layer: 0
+  m_Name: InitiateRemixManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164875645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164875644}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1173241895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164875646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164875644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27fa7933bacbf44cb4648553f181532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &168343436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3523,8 @@ MonoBehaviour:
   currentScene: 
   remixSound: {fileID: 512871907}
   music: {fileID: 0}
+  finalRemixText: {fileID: 0}
+  menuManager: {fileID: 0}
 --- !u!95 &512871909
 Animator:
   serializedVersion: 7
@@ -34086,6 +34132,7 @@ Transform:
   - {fileID: 976053263}
   - {fileID: 1352330161}
   - {fileID: 1439012116}
+  - {fileID: 164875645}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1173417386
@@ -51528,6 +51575,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1884660848}
   darknessScreen: {fileID: 2082617010}
   theCamera: {fileID: 1376154342}
+  jumpAmountIndicator: {fileID: 0}
   minSpeed: 12
   maxSpeed: 30
   minJumps: 2
@@ -52138,6 +52186,8 @@ MonoBehaviour:
   currentScene: 
   remixSound: {fileID: 0}
   music: {fileID: 0}
+  finalRemixText: {fileID: 0}
+  menuManager: {fileID: 0}
 --- !u!95 &2113572305
 Animator:
   serializedVersion: 7

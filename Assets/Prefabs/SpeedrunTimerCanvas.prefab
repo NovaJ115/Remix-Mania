@@ -120,7 +120,7 @@ MonoBehaviour:
   elapsedTime: 0
   milliseconds: 0
   gameIsOn: 0
-  enableSpeedrunTimer: 1
+  enableSpeedrunTimer: 0
 --- !u!1 &6938006377438354980
 GameObject:
   m_ObjectHideFlags: 0

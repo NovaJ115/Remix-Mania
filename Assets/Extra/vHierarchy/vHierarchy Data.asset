@@ -16,6 +16,7 @@ MonoBehaviour:
     keys:
     - 8c9cfa26abfee488c85f1582747f6a02
     - eac9ba880cf809e468b9f09d092beb55
+    - fb77b13418fda7445a57cc2adeb228e4
     values:
     - goDatas_byGlobalId:
         keys:
@@ -47,6 +48,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-519420028-0
         - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-619394800-0
         - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-1983108866-0
+        - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-148406317-0
+        - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-1028279676-0
         values:
         - colorIndex: 7
           iconNameOrGuid: AvatarMask On Icon
@@ -68,3 +71,22 @@ MonoBehaviour:
           iconNameOrGuid: Light Icon
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+        - colorIndex: 9
+          iconNameOrGuid: AudioClip Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-fb77b13418fda7445a57cc2adeb228e4-328352284-0
+        - globalObjectIdString: GlobalObjectId_V1-2-fb77b13418fda7445a57cc2adeb228e4-1128624295-0
+        - globalObjectIdString: GlobalObjectId_V1-2-fb77b13418fda7445a57cc2adeb228e4-2096817726-0
+        - globalObjectIdString: GlobalObjectId_V1-2-fb77b13418fda7445a57cc2adeb228e4-968008287-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 5
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
