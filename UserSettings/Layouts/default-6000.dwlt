@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 2048
     height: 1093.6
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_MinSize: {x: 725, y: 426}
   m_MaxSize: {x: 4000, y: 4026}
   vertical: 0
-  controlID: 41287
+  controlID: 19
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 29743
+  controlID: 161
   draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 29744
+  controlID: 58
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -272,8 +272,8 @@ MonoBehaviour:
     y: 470.4
     width: 898.4
     height: 567.19995
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 29767
+  controlID: 162
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 29768
+  controlID: 82
   draggingID: 0
 --- !u!114 &14
 MonoBehaviour:
@@ -351,8 +351,8 @@ MonoBehaviour:
     y: 0
     width: 250.4
     height: 708.8
-  m_MinSize: {x: 202, y: 226}
-  m_MaxSize: {x: 4002, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 26}
   m_Panes:
   - {fileID: 26}
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 883.18274, y: 651.4642, z: 24.437313}
     speed: 2
-    m_Value: {x: 862.0243, y: 645.13965, z: 25.038721}
+    m_Value: {x: 883.18274, y: 651.4642, z: 24.437313}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 1396.5978
     speed: 2
-    m_Value: 1336.4572
+    m_Value: 1396.5978
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -3844,7 +3844,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: eaeefcff90f0fcff42f4fcff94f4fcff9af5fcffe0f5fcffe2f9fcff1839fdffcc41fdff0a5dfdffc69efdff0ea6fdffead1fdffd4d2fdff92dafdfff44ffeff84aafeff9cf5ffffe4fafffff4fffffff8c0000052f701004ef901009a110200a423020032920200e4a8020018c70200743403005c360300
+      m_ExpandedIDs: 9804ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -3933,7 +3933,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 14e70000
     m_LastClickedID: 59156
-    m_ExpandedIDs: ffffffff000000007cbb0000a0be0000a4be0000a6be0000acbe0000b0be0000e8bf0000fac900005ed70100
+    m_ExpandedIDs: 00000000e4250100e6250100e8250100ea250100ec250100ee250100f0250100f2250100f4250100f6250100f8250100fa250100fc250100fe25010000260100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -3962,21 +3962,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000007cbb00009ebe0000a0be0000a2be0000a4be0000a6be0000acbe0000b0be0000cebf0000dabf0000e8bf00002ac4000040c50000fac9000070ca0000
+    m_ExpandedIDs: ffffffff0000000086df0000e4250100e8250100ea250100ec250100ee250100f0250100f2250100f4250100f6250100f8250100fe25010000260100be270100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: GenericButton2
-      m_OriginalName: GenericButton2
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 198216
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 15}
