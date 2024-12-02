@@ -22,23 +22,27 @@ public class InitiateRemixManager : MonoBehaviour
     void Start()
     {
         coinManager = FindFirstObjectByType<CoinManager>();
-        progressCounter.text = PlayerPrefs.GetInt("Progress") + "/" + completionAmount;
+        if(progressCounter != null)
+        {
+            progressCounter.text = PlayerPrefs.GetInt("Progress") + "/" + completionAmount;
+        }
         cooldown = false;
+        Debug.Log("Progress : " + PlayerPrefs.GetInt("Progress"));
     }
     void Update()
     {
         if (coinManager.pressRToRemix.activeInHierarchy == true && Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name == "Level1" && cooldown == false)
         {
-
+            
             Invoke("ResetCooldown", 5.0f);
             cooldown = true;
-            if (PlayerPrefs.GetInt("Progress") == completionAmount)
+            if (PlayerPrefs.GetInt("Progress") == completionAmount-1)
             {
                 coinManager.anim.SetBool("PressedRForWin", true);
             }
             else
             {
-                if (PlayerPrefs.GetInt("Progress") == completionAmount-1)
+                if (PlayerPrefs.GetInt("Progress") == completionAmount-2)
                 {
                     coinManager.anim.SetBool("PressedRForFinalRemix", true);
                     int newProgress = PlayerPrefs.GetInt("Progress") + 1;

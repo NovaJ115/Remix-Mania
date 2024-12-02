@@ -50,6 +50,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-1983108866-0
         - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-148406317-0
         - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-1028279676-0
+        - globalObjectIdString: GlobalObjectId_V1-2-eac9ba880cf809e468b9f09d092beb55-8644429176792958270-433865028
         values:
         - colorIndex: 7
           iconNameOrGuid: AvatarMask On Icon
@@ -75,6 +76,8 @@ MonoBehaviour:
           iconNameOrGuid: AudioSource Icon
         - colorIndex: 9
           iconNameOrGuid: AudioClip Icon
+        - colorIndex: 5
+          iconNameOrGuid: 
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-fb77b13418fda7445a57cc2adeb228e4-328352284-0
