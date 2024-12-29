@@ -6,8 +6,22 @@ public class MenuManager : MonoBehaviour
 {
     private string currentScene;
     public GameObject pauseMenu;
-    
+    public Animator pauseAnim;
+    public Animator fadeToBlackAnim;
 
+    public void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "ShopTest" && fadeToBlackAnim != null)
+        {
+            fadeToBlackAnim.Play("FadeFromBlackScreen");
+            
+        }
+        if(pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+        }
+        
+    }
     public void Awake()
     {
         currentScene = SceneManager.GetActiveScene().name;
@@ -56,11 +70,11 @@ public class MenuManager : MonoBehaviour
         {
             if (pauseMenu.activeInHierarchy == true)
             {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
             }
             else
             {
-                Time.timeScale = 1;
+                //Time.timeScale = 1;
             }
         }
         

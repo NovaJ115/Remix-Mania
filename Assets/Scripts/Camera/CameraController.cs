@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     public float zoomSpeed;
     public Animator screenOpenAnim;
 
+    public bool allowZoom;
+
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,14 +27,18 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*if (Input.GetKey(KeyCode.Q))
+        if(allowZoom == true)
         {
-            theCamera.GetComponent<CinemachineCamera>().Lens.OrthographicSize -= zoomSpeed;
+            if (Input.GetKey(KeyCode.Z))
+            {
+                theCamera.GetComponent<CinemachineCamera>().Lens.OrthographicSize -= zoomSpeed;
+            }
+            if (Input.GetKey(KeyCode.X))
+            {
+                theCamera.GetComponent<CinemachineCamera>().Lens.OrthographicSize += zoomSpeed;
+            }
         }
-        if (Input.GetKey(KeyCode.E))
-        {
-            theCamera.GetComponent<CinemachineCamera>().Lens.OrthographicSize += zoomSpeed;
-        }*/
+        
     }
 
     

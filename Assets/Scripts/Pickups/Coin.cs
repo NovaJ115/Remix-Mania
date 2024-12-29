@@ -33,6 +33,11 @@ public class Coin : MonoBehaviour
             rotationSpeed = Random.Range(coinManager.minSpinSpeed, coinManager.maxSpinSpeed);
             pickupEffect = GameObject.Find("RecordPickupEffect");
         }
+        if(SceneManager.GetActiveScene().name == "ArtTest")
+        {
+            Debug.Log(rotationSpeed);
+        }
+        
         
     }
     public void OnTriggerEnter2D(Collider2D other)

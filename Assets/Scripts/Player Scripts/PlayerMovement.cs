@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit2D headHit;
     public bool isGrounded;
     private bool bumpedHead;
+    private Vector2 theFeetCheckDirection;
 
     //Jump vars
     public float verticalVelocity { get; private set; }
@@ -63,7 +64,11 @@ public class PlayerMovement : MonoBehaviour
         CountTimers();
         //Debug.Log(verticalVelocity);
         //Debug.Log(numberOfJumpsUsed);
-        jumpsRemainingText.text = (moveStats.numberOfJumpsAllowed - numberOfJumpsUsed).ToString();
+        if(jumpsRemainingText != null)
+        {
+            jumpsRemainingText.text = (moveStats.numberOfJumpsAllowed - numberOfJumpsUsed).ToString();
+        }
+        
     }
 
     private void FixedUpdate()
@@ -350,8 +355,16 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 boxCastOrigin = new Vector2(feetColl.bounds.center.x, feetColl.bounds.min.y);
         Vector2 boxCastSize = new Vector2(feetColl.bounds.size.x, moveStats.groundDetectionRayLength);
-
-        groundHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, moveStats.groundDetectionRayLength, moveStats.groundLayer);
+        
+        if (statRandomizer.isReverseGravity == true)
+        {
+            theFeetCheckDirection = Vector2.up;
+        }
+        if(statRandomizer.isReverseGravity == false)
+        {
+            theFeetCheckDirection = Vector2.down;
+        }
+        groundHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, theFeetCheckDirection, moveStats.groundDetectionRayLength, moveStats.groundLayer);
         if(groundHit.collider != null)
         {
             isGrounded = true;

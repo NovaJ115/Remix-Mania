@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ClosePause : MonoBehaviour
 {
@@ -14,10 +15,16 @@ public class ClosePause : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                menuManager.pauseMenu.SetActive(false);
+                menuManager.pauseAnim.Play("PauseMenu_Close");
+                InputManager.playerInput.currentActionMap.Enable();
 
             }
-
+            
         }
     }
+    public void DisableThePauseMenu()
+    {
+        menuManager.pauseMenu.SetActive(false);
+    }
+    
 }
