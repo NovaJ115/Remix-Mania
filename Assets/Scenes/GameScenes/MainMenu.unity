@@ -3074,7 +3074,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.0.4
+  m_text: 'v1.0.5
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d0b9f8f25b4feb4d9b4886d3b756956, type: 2}
   m_sharedMaterial: {fileID: -8976207149088941686, guid: 8d0b9f8f25b4feb4d9b4886d3b756956, type: 2}
@@ -3319,6 +3321,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  pauseAnim: {fileID: 0}
+  fadeToBlackAnim: {fileID: 0}
 --- !u!4 &896630594
 Transform:
   m_ObjectHideFlags: 0

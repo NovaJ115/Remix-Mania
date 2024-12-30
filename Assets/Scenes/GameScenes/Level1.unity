@@ -2325,7 +2325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2188033310451220898, guid: 8bbaa200cf653ec40afbb18866184040, type: 3}
       propertyPath: progressAmount
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2639267994792508555, guid: 8bbaa200cf653ec40afbb18866184040, type: 3}
       propertyPath: m_Pivot.x
@@ -3906,8 +3906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a9bcf2cfe8ddf4687a0179468fe820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xOffset: -1
-  yOffset: 0.9
+  xOffset: -0.8
+  yOffset: 0.7
 --- !u!4 &898328672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6266568964159676500, guid: 8506cfc47054e3046b212c440a0eced8, type: 3}
@@ -27865,7 +27865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1981121679
 Transform:
   m_ObjectHideFlags: 0
