@@ -4,6 +4,7 @@ public class DoorManager : MonoBehaviour
 {
     public GameObject textAboveDoor;
     public Animator fadeToBlack;
+    public string sceneToTransitionTo;
     void Start()
     {
         textAboveDoor.SetActive(false);
@@ -35,6 +36,8 @@ public class DoorManager : MonoBehaviour
         
         if (other.gameObject.tag == "Body" && Input.GetKeyDown(KeyCode.F))
         {
+            fadeToBlack.GetComponent<EnterBuilding>().theSceneName = sceneToTransitionTo;
+            PlayerPrefs.SetInt("Progress", 0);
             fadeToBlack.Play("FadeToBlackScreen");
             Debug.Log("Player Hit F");
             this.gameObject.SetActive(false);

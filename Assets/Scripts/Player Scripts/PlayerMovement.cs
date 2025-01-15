@@ -355,15 +355,18 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 boxCastOrigin = new Vector2(feetColl.bounds.center.x, feetColl.bounds.min.y);
         Vector2 boxCastSize = new Vector2(feetColl.bounds.size.x, moveStats.groundDetectionRayLength);
+        if(statRandomizer != null)
+        {
+            if (statRandomizer.isReverseGravity == true)
+            {
+                theFeetCheckDirection = Vector2.up;
+            }
+            if (statRandomizer.isReverseGravity == false)
+            {
+                theFeetCheckDirection = Vector2.down;
+            }
+        }
         
-        if (statRandomizer.isReverseGravity == true)
-        {
-            theFeetCheckDirection = Vector2.up;
-        }
-        if(statRandomizer.isReverseGravity == false)
-        {
-            theFeetCheckDirection = Vector2.down;
-        }
         groundHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, theFeetCheckDirection, moveStats.groundDetectionRayLength, moveStats.groundLayer);
         if(groundHit.collider != null)
         {

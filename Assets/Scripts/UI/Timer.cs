@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
 
             //Debug.Log("OnWinScreen");
         }
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "MainMenuV2")
         {
             elapsedTime = 0;
         }

@@ -32,7 +32,7 @@ public class EndScene : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuV2");
     }
     public void GoToWinScreen()
     {

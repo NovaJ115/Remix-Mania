@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 43638473}
   - component: {fileID: 43638472}
   - component: {fileID: 43638475}
+  - component: {fileID: 43638476}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -392,6 +393,19 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &43638476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43638471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232f0ab540614e148bbc69dcdd593514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canScreenshot: 1
 --- !u!1 &45385568
 GameObject:
   m_ObjectHideFlags: 0
@@ -27365,6 +27379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textAboveDoor: {fileID: 1283317326}
   fadeToBlack: {fileID: 1282594176}
+  sceneToTransitionTo: ShopTest
 --- !u!1 &1097957862
 GameObject:
   m_ObjectHideFlags: 0
@@ -72445,6 +72460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1362931313}
+  pauseAnim: {fileID: 0}
   fadeToBlackAnim: {fileID: 0}
 --- !u!1001 &41406448557828840
 PrefabInstance:

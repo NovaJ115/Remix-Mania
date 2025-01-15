@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
         }
+
         
     }
     public void Awake()
@@ -29,7 +30,7 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuV2");
         
     }
     public void RestartLevel()

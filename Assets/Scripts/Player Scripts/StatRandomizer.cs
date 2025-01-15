@@ -120,32 +120,36 @@ public class StatRandomizer : MonoBehaviour
         #region SetProgressionBools
         if(SceneManager.GetActiveScene().name != "Tutorial")
         {
-            if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockSpeedAndJump)
+            if(remixManager != null)
             {
-                speedEnabled = true;
-                jumpsEnabled = true;
+                if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockSpeedAndJump)
+                {
+                    speedEnabled = true;
+                    jumpsEnabled = true;
+                }
+                if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockInverted)
+                {
+                    invertedControlsEnabled = true;
+                }
+                if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockDarkness)
+                {
+                    darknessEnabled = true;
+                }
+                if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockUpsideDown)
+                {
+                    upsideDownEnabled = true;
+                }
+                if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockReverseGravity)
+                {
+                    reverseGravityEnabled = true;
+                }
+                if (PlayerPrefs.GetInt("Progress") == remixManager.completionAmount - 1)
+                {
+                    ExtremeModeEnabled();
+                    isExtremeModeEnabled = true;
+                }
             }
-            if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockInverted)
-            {
-                invertedControlsEnabled = true;
-            }
-            if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockDarkness)
-            {
-                darknessEnabled = true;
-            }
-            if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockUpsideDown)
-            {
-                upsideDownEnabled = true;
-            }
-            if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockReverseGravity)
-            {
-                reverseGravityEnabled = true;
-            }
-            if (PlayerPrefs.GetInt("Progress") == remixManager.completionAmount-1)
-            {
-                ExtremeModeEnabled();
-                isExtremeModeEnabled = true;
-            }
+            
         }
         
         #endregion
@@ -169,9 +173,12 @@ public class StatRandomizer : MonoBehaviour
             }
         }
         else
-        {
-            invertedControlsTxt.gameObject.SetActive(false);
-            invertedControlsLock.SetActive(true);
+        { if(invertedControlsTxt != null)
+            {
+                invertedControlsTxt.gameObject.SetActive(false);
+                invertedControlsLock.SetActive(true);
+            }
+            
         }
 
         if (darknessEnabled)
@@ -195,8 +202,12 @@ public class StatRandomizer : MonoBehaviour
         }
         else
         {
-            darknessTxt.gameObject.SetActive(false);
-            darknessLock.SetActive(true);
+            if(darknessTxt != null)
+            {
+                darknessTxt.gameObject.SetActive(false);
+                darknessLock.SetActive(true);
+            }
+            
         }
         if (upsideDownEnabled)
         {
@@ -213,15 +224,23 @@ public class StatRandomizer : MonoBehaviour
             else
             {
                 isUpsideDown = false;
-                upsideDownTxt.text = ("Upside-Down Screen: Off");
-                upsideDownTxt.color = Color.red;
+                if(upsideDownTxt != null)
+                {
+                    upsideDownTxt.text = ("Upside-Down Screen: Off");
+                    upsideDownTxt.color = Color.red;
+                }
+                
                 theCamera.transform.Rotate(0, 0, 0);
             }
         }
         else
         {
-            upsideDownTxt.gameObject.SetActive(false);
-            upsideDownLock.SetActive(true);
+            if(upsideDownTxt != null)
+            {
+                upsideDownTxt.gameObject.SetActive(false);
+                upsideDownLock.SetActive(true);
+            }
+            
         }
         if (reverseGravityEnabled)
         {
@@ -237,15 +256,22 @@ public class StatRandomizer : MonoBehaviour
             else
             {
                 isReverseGravity = false;
-                reverseGravityTxt.text = ("Reverse Gravity: Off");
+                if(reverseGravityTxt != null)
+                {
+                    reverseGravityTxt.text = ("Reverse Gravity: Off");
+                    reverseGravityTxt.color = Color.red;
+                }
                 playerMovement.GetComponent<Transform>().Rotate(0, 0, 0);
-                reverseGravityTxt.color = Color.red;
             }
         }
         else
         {
-            reverseGravityTxt.gameObject.SetActive(false);
-            reverseGravityLock.SetActive(true);
+            if(reverseGravityTxt != null)
+            {
+                reverseGravityTxt.gameObject.SetActive(false);
+                reverseGravityLock.SetActive(true);
+            }
+            
         }
 
 
@@ -259,8 +285,12 @@ public class StatRandomizer : MonoBehaviour
         {
             currentSpeed = baseSpeed;
             randomStats.maxWalkSpeed = currentSpeed;
-            speedTxt.text = "Speed: " + currentSpeed;
-            speedTxt.color = Color.grey;
+            if(speedTxt != null)
+            {
+                speedTxt.text = "Speed: " + currentSpeed;
+                speedTxt.color = Color.grey;
+            }
+            
         }
 
         if (jumpsEnabled)
@@ -273,8 +303,12 @@ public class StatRandomizer : MonoBehaviour
         {
             currentJumps = baseJumps;
             randomStats.numberOfJumpsAllowed = currentJumps;
-            jumpsTxt.text = "Jumps: " + currentJumps;
-            jumpsTxt.color = Color.grey;
+            if(jumpsTxt != null)
+            {
+                jumpsTxt.text = "Jumps: " + currentJumps;
+                jumpsTxt.color = Color.grey;
+            }
+            
         }
         
         playerMovement.moveStats = randomStats;
