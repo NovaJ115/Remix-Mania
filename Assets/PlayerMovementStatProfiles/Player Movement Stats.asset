@@ -40,4 +40,4 @@ MonoBehaviour:
   stopOnCollision: 1
   drawRight: 1
   arcResolution: 20
-  visualizationSteps: 90
+  visualizationSteps: 91

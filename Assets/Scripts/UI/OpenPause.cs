@@ -3,23 +3,31 @@ using UnityEngine.InputSystem;
 
 public class OpenPause : MonoBehaviour
 {
-    private MenuManager menuManager;
+    public GameObject pauseMenu;
 
     private void Start()
     {
-        menuManager = FindFirstObjectByType<MenuManager>();
+        if(pauseMenu != null && pauseMenu.activeInHierarchy == true)
+        {
+            pauseMenu.transform.parent.gameObject.SetActive(false);
+        }
     }
     private void Update()
     {
-        if (menuManager.pauseMenu != null && menuManager.pauseMenu.activeInHierarchy == false)
+        if (pauseMenu != null && pauseMenu.activeInHierarchy == false)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                menuManager.pauseMenu.SetActive(true);
-                menuManager.pauseAnim.Play("PauseMenu_Open");
-                InputManager.playerInput.currentActionMap.Disable();
+                OpenThePauseMenu();
             }
 
         }
     }
+    public void OpenThePauseMenu()
+    {
+        pauseMenu.transform.parent.gameObject.SetActive(true);
+        pauseMenu.GetComponent<Animator>().Play("PauseMenu_Open");
+        InputManager.playerInput.currentActionMap.Disable();
+    }
+
 }

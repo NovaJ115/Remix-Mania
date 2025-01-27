@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Collider2D feetColl;
     public StatRandomizer statRandomizer;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     //Movement vars
     private Vector2 moveVelocity;
@@ -242,6 +242,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
         }
         Instantiate(Resources.Load("JumpEffect"), jumpEffectSpawnPoint.transform.position, Quaternion.identity);
+        
         jumpBufferTimer = 0f;
         numberOfJumpsUsed += addedNumberOfJumpsUsed;
         verticalVelocity = moveStats.initialJumpVelocity;

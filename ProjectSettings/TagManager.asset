@@ -9,6 +9,8 @@ TagManager:
   - Body
   - Music
   - Timer
+  - Slider
+  - Cinemachine
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
         {
             Load();
         }
+        //volumeSlider = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
     }
 
     public void ChangeVolume()
