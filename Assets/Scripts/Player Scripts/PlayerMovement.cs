@@ -105,6 +105,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(moveVelocity.x, rb.linearVelocity.y);
             }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                targetVelocity *= 2;
+                Debug.Log("PressedShift");
+            }
             
         }
         else if(moveInput == Vector2.zero)

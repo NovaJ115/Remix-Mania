@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 43638476}
   m_Layer: 0
   m_Name: CinemachineCamera
-  m_TagString: Untagged
+  m_TagString: Cinemachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96261,9 +96261,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theCamera: {fileID: 43638471}
-  zoomSpeed: 0.2
+  cinemachine: {fileID: 0}
   screenOpenAnim: {fileID: 27400121}
+  zoomSpeed: 0.2
+  lookUpHeight: 0
+  lookDownHeight: 0
   allowZoom: 1
+  allowLookUp: 0
+  allowLookDown: 0
 --- !u!1 &1690116922
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,12 +9,15 @@ public class PlayerMovementStats : ScriptableObject
     [Range(.25f, 50f)] public float groundDeceleration = 20f;
     [Range(.25f, 50f)] public float airAcceleration = 5f;
     [Range(.25f, 50f)] public float airDeceleration = 5f;
+    [Range(.25f, 50f)] public float wallJumpMoveAcceleration = 5f;
+    [Range(.25f, 50f)] public float wallJumpMoveDeceleration = 5f;
 
     [Header("Collision Checks")]
     public LayerMask groundLayer;
     public float groundDetectionRayLength = 0.02f;
     public float headDetectionRayLength = 0.02f;
     [Range(0f, 1f)] public float headWidth = 0.75f;
+    public float wallDetectionRayLength = 0.125f;
 
     [Header("Jump")]
     public float jumpHeight = 6.5f;
