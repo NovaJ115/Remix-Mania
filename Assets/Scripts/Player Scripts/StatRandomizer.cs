@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class StatRandomizer : MonoBehaviour
 {
     [Header("References")]
-    public PlayerMovementStats randomStats;
-    public PlayerMovement playerMovement;
+    public PlayerMovementStatsV2 randomStats;
+    public PlayerMovementV2 playerMovement;
     public InitiateRemixManager remixManager;
     public GameObject darknessScreen;
     public GameObject theCamera;
@@ -68,6 +68,7 @@ public class StatRandomizer : MonoBehaviour
 
     public void Start()
     {
+        
         remixManager = FindFirstObjectByType<InitiateRemixManager>();
         if (PlayerPrefs.GetString("Difficulty") == "Easy")
         {
@@ -149,7 +150,7 @@ public class StatRandomizer : MonoBehaviour
                     isExtremeModeEnabled = true;
                 }
             }
-            
+            playerMovement.moveStats = randomStats;
         }
         
         #endregion
@@ -311,7 +312,7 @@ public class StatRandomizer : MonoBehaviour
             
         }
         
-        playerMovement.moveStats = randomStats;
+        
         #endregion
     }
 

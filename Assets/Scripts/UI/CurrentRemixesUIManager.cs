@@ -20,7 +20,7 @@ public class CurrentRemixesUIManager : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (InputManager.closeTabWasPressed)
         {
             ToggleAnim();
         }

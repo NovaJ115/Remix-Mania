@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3508,7 +3508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4938,6 +4938,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3770608192938513369, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770608192938513369, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830259465872201755, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4500338680811266966, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5030,6 +5042,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5370647512934410450, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002784149794346318, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8094735033011084930, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5037,6 +5057,10 @@ PrefabInstance:
     - target: {fileID: 8094735033011084930, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362312449053109954, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8362312449053109954, guid: 28bf922ad08a58747bc8b746b1e41382, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

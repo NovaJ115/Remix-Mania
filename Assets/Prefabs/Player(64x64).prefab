@@ -288,7 +288,6 @@ GameObject:
   - component: {fileID: 6601331692029354435}
   - component: {fileID: 8353618762024298940}
   - component: {fileID: 971835057118408832}
-  - component: {fileID: 6637647754764306817}
   m_Layer: 0
   m_Name: Player(64x64)
   m_TagString: Player
@@ -399,27 +398,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6637647754764306817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015195070122189362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6346928e85b92349b6822415f447589, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveStats: {fileID: 11400000, guid: 5b9b4087a13ccc64db6dedb175f990b2, type: 2}
-  bodyColl: {fileID: 5253551037236360719}
-  feetColl: {fileID: 2647503117209733586}
-  statRandomizer: {fileID: 0}
-  isGrounded: 0
-  isJumping: 0
-  jumpEffectSpawnPoint: {fileID: 6150618205870174331}
-  jumpsRemainingText: {fileID: 0}
-  jumpCounterCanvas: {fileID: 0}
 --- !u!1 &4302798009418029904
 GameObject:
   m_ObjectHideFlags: 0

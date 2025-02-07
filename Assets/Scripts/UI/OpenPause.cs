@@ -16,7 +16,8 @@ public class OpenPause : MonoBehaviour
     {
         if (pauseMenu != null && pauseMenu.activeInHierarchy == false)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            
+            if (InputManager.pauseWasPressed)
             {
                 OpenThePauseMenu();
             }
@@ -25,6 +26,7 @@ public class OpenPause : MonoBehaviour
     }
     public void OpenThePauseMenu()
     {
+        InputManager.playerInput.SwitchCurrentActionMap("Player");
         pauseMenu.transform.parent.gameObject.SetActive(true);
         pauseMenu.GetComponent<Animator>().Play("PauseMenu_Open");
         InputManager.playerInput.currentActionMap.Disable();

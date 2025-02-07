@@ -12,9 +12,13 @@ public class CameraController : MonoBehaviour
     public float zoomSpeed;
     public float lookUpHeight;
     public float lookDownHeight;
+    public float lookLeftLength;
+    public float lookRightLength;
     public bool allowZoom;
     public bool allowLookUp;
     public bool allowLookDown;
+    public bool allowLookLeft;
+    public bool allowLookRight;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +45,7 @@ public class CameraController : MonoBehaviour
         }
         if(allowLookUp == true)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (InputManager.lookUpIsHeld)
             {
                 cinemachine.GetComponent<CinemachinePositionComposer>().Composition.ScreenPosition.y = lookUpHeight;
             }
@@ -49,15 +53,35 @@ public class CameraController : MonoBehaviour
         }
         if (allowLookDown == true)
         {
-            if (Input.GetKey(KeyCode.S))
+            if (InputManager.lookDownIsHeld)
             {
                 cinemachine.GetComponent<CinemachinePositionComposer>().Composition.ScreenPosition.y = -lookDownHeight;
             }
         }
+        if (allowLookLeft == true)
+        {
+            if (InputManager.lookLeftIsHeld)
+            {
+                cinemachine.GetComponent<CinemachinePositionComposer>().Composition.ScreenPosition.x = lookLeftLength;
+            }
 
-        if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        }
+        if (allowLookRight == true)
+        {
+            if (InputManager.lookRightIsHeld)
+            {
+                cinemachine.GetComponent<CinemachinePositionComposer>().Composition.ScreenPosition.x = -lookRightLength;
+            }
+        }
+
+        if (!InputManager.lookUpIsHeld && !InputManager.lookDownIsHeld)
         {
             cinemachine.GetComponent<CinemachinePositionComposer>().Composition.ScreenPosition.y = 0;
+            
+        }
+        if(!InputManager.lookLeftIsHeld && !InputManager.lookRightIsHeld)
+        {
+            cinemachine.GetComponent<CinemachinePositionComposer>().Composition.ScreenPosition.x = 0;
         }
 
     }

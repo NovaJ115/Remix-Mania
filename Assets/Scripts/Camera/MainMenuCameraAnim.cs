@@ -10,7 +10,7 @@ public class MainMenuCameraAnim : MonoBehaviour
     public GameObject mainPos;
     public GameObject levelSelectPos;
 
-    void Awake()
+    void Start()
     {
         if(FindAnyObjectByType<MenuManager>().startOnMainCam == true)
         {
@@ -38,10 +38,7 @@ public class MainMenuCameraAnim : MonoBehaviour
             this.gameObject.transform.position = levelSelectPos.transform.position;
         }
     }
-    public void Start()
-    {
-        //InputManager.playerInput.currentActionMap.Disable();
-    }
+    
     public void EndScrollUp()
     {
         InputManager.playerInput.currentActionMap.Enable();

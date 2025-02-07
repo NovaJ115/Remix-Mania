@@ -30,28 +30,20 @@ public class MenuManager : MonoBehaviour
         {
             fadeToBlackAnim.Play("FadeFromBlackScreen");
         }
-        currentScene = SceneManager.GetActiveScene().name;
         mainMenuCamera = GameObject.FindWithTag("MainCamera");
         
-    }
-    public void Awake()
-    {
-        
-    }
-    public void OnLevelWasLoaded()
-    {
-        currentScene = SceneManager.GetActiveScene().name;
-
-        mainMenuCamera = GameObject.FindWithTag("MainCamera");
         if (mainMenuCamera != null && mainMenuCamera.GetComponent<MainMenuCameraAnim>() != null)
         {
-            if (startOnMainCam == true)
+            mainMenuCamera.GetComponent<MainMenuCameraAnim>().startOnMain = startOnMainCam;
+            mainMenuCamera.GetComponent<MainMenuCameraAnim>().startOnMain = startOnLevelSelectCam;
+            
+            if (PlayerPrefs.GetString("MainMenuSection") == "Main")
             {
                 mainMenuCamera.transform.position = mainMenuCamera.GetComponent<MainMenuCameraAnim>().mainPos.transform.position;
                 Debug.Log("StartOnMain");
                 InputManager.playerInput.currentActionMap.Disable();
             }
-            if (startOnLevelSelectCam == true)
+            if (PlayerPrefs.GetString("MainMenuSection") == "LevelSelect")
             {
                 mainMenuCamera.GetComponent<Animator>().enabled = false;
                 mainMenuCamera.transform.position = mainMenuCamera.GetComponent<MainMenuCameraAnim>().levelSelectPos.transform.position;
@@ -60,26 +52,22 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
-    public void Update()
-    {
-        
-    }
     public void ReturnToMainMenu(string mainMenuSection)
     {
         Time.timeScale = 1;
-        if(mainMenuSection == "Main")
+        if (mainMenuSection == "Main")
         {
-            startOnMainCam = true;
-            startOnLevelSelectCam = false;
+            PlayerPrefs.SetString("MainMenuSection", "Main");
             SceneManager.LoadScene("MainMenuV2");
         }
         if (mainMenuSection == "LevelSelect")
         {
-            startOnMainCam = false;
-            startOnLevelSelectCam = true;
+            PlayerPrefs.SetString("MainMenuSection", "LevelSelect");
             SceneManager.LoadScene("MainMenuV2");
         }
+        
     }
+    
     public void RestartLevel()
     {
         SceneManager.LoadScene(currentScene);
@@ -111,5 +99,9 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("Progress", 0);
         //SceneManager.LoadScene("Level1");
     }
-    
+
+    public void Update()
+    {
+        //Debug.Log(InputManager.playerInput.currentActionMap.enabled);
+    }
 }

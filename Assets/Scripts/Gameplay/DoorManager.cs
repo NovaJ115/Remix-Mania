@@ -34,7 +34,7 @@ public class DoorManager : MonoBehaviour
     public void OnTriggerStay2D(Collider2D other)
     {
         
-        if (other.gameObject.tag == "Body" && Input.GetKeyDown(KeyCode.F))
+        if (other.gameObject.tag == "Body" && InputManager.interactWasPressed)
         {
             fadeToBlack.GetComponent<EnterBuilding>().theSceneName = sceneToTransitionTo;
             PlayerPrefs.SetInt("Progress", 0);

@@ -3,12 +3,12 @@ using UnityEngine;
 public class RemAnimationManager : MonoBehaviour
 {
     public Animator remAnim;
-    public PlayerMovement playerMovement;
+    public PlayerMovementV2 playerMovement;
     public GameObject face;
 
     public void Start()
     {
-        playerMovement = FindFirstObjectByType<PlayerMovement>();
+        playerMovement = FindFirstObjectByType<PlayerMovementV2>();
         
     }
 

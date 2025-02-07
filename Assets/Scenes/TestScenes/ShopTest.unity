@@ -2607,9 +2607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77468cfb81198f5438ae87384e21b794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  pauseAnim: {fileID: 0}
   fadeToBlackAnim: {fileID: 565705637}
+  startOnMainCam: 0
+  startOnLevelSelectCam: 0
+  mainMenuCamera: {fileID: 0}
 --- !u!1 &4630136276858330612
 GameObject:
   m_ObjectHideFlags: 0

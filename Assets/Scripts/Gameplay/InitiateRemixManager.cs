@@ -31,7 +31,7 @@ public class InitiateRemixManager : MonoBehaviour
     }
     void Update()
     {
-        if (coinManager.pressRToRemix.activeInHierarchy == true && Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name == "Level1" && cooldown == false)
+        if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level1" && cooldown == false)
         {
             
             Invoke("ResetCooldown", 5.0f);
@@ -56,7 +56,7 @@ public class InitiateRemixManager : MonoBehaviour
                 }
             }
         }
-        if (coinManager.pressRToRemix.activeInHierarchy == true && Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().name == "Tutorial")
+        if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Tutorial")
         {
             coinManager.anim.SetBool("PressedRInTutorial", true);
         }

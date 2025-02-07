@@ -8,6 +8,8 @@ public class GameSettingsMenu : MonoBehaviour
     public GameObject hard;
     public GameObject timerOn;
     public GameObject timerOff;
+    public GameObject jumpIndicatorOn;
+    public GameObject jumpIndicatorOff;
 
     private void Start()
     {
@@ -45,6 +47,16 @@ public class GameSettingsMenu : MonoBehaviour
             timerOn.GetComponent<Image>().color = Color.grey;
             timerOff.GetComponent<Image>().color = Color.white;
         }
+        if (PlayerPrefs.GetString("EnableJumpIndicator") == "True")
+        {
+            jumpIndicatorOn.GetComponent<Image>().color = Color.white;
+            jumpIndicatorOff.GetComponent<Image>().color = Color.grey;
+        }
+        else
+        {
+            jumpIndicatorOn.GetComponent<Image>().color = Color.grey;
+            jumpIndicatorOff.GetComponent<Image>().color = Color.white;
+        }
     }
     
     public void ResetAllButtons()
@@ -54,6 +66,8 @@ public class GameSettingsMenu : MonoBehaviour
         hard.GetComponent<Image>().color = Color.grey;
         timerOn.GetComponent<Image>().color = Color.grey;
         timerOff.GetComponent<Image>().color = Color.grey;
+        jumpIndicatorOn.GetComponent<Image>().color = Color.grey;
+        jumpIndicatorOff.GetComponent<Image>().color = Color.grey;
     }
     public void ResetDifficultyButtons()
     {
@@ -68,6 +82,10 @@ public class GameSettingsMenu : MonoBehaviour
     {
         timerOn.GetComponent<Image>().color = Color.grey;
         timerOff.GetComponent<Image>().color = Color.grey;
-        
+    }
+    public void ResetJumpIndicatorButtons()
+    {
+        jumpIndicatorOn.GetComponent<Image>().color = Color.grey;
+        jumpIndicatorOff.GetComponent<Image>().color = Color.grey;
     }
 }
