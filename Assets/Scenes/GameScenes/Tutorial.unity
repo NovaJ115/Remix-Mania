@@ -28850,13 +28850,13 @@ MonoBehaviour:
   zoomSpeed: 0.2
   lookUpHeight: 0.3
   lookDownHeight: 0.3
-  lookLeftLength: 0
-  lookRightLength: 0
+  lookLeftLength: 0.3
+  lookRightLength: 0.3
   allowZoom: 0
   allowLookUp: 1
   allowLookDown: 1
-  allowLookLeft: 0
-  allowLookRight: 0
+  allowLookLeft: 1
+  allowLookRight: 1
 --- !u!1001 &960771815
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -102,6 +102,7 @@ public class MenuManager : MonoBehaviour
 
     public void Update()
     {
+        currentScene = SceneManager.GetActiveScene().name;
         //Debug.Log(InputManager.playerInput.currentActionMap.enabled);
     }
 }

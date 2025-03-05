@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Movement Stats V2
   m_EditorClassIdentifier: 
   moveThreshold: 0.25
-  maxWalkSpeed: 22
+  maxWalkSpeed: 18
   groundAcceleration: 5
   groundDeceleration: 20
   airAcceleration: 5
@@ -34,8 +34,8 @@ MonoBehaviour:
   timeTillJumpApex: 0.35
   gravityOnReleaseMultiplier: 2
   maxFallSpeed: 26
-  numberOfJumpsAllowed: 4
-  resetJumpsOnWallSlide: 1
+  numberOfJumpsAllowed: 2
+  resetJumpsOnWallSlide: 0
   timeForUpwardsCancel: 0.027
   apexThreshold: 0.97
   apexHangTime: 0.01
@@ -46,11 +46,12 @@ MonoBehaviour:
   wallJumpDirection: {x: -20, y: 6.5}
   wallJumpPostBufferTime: 0.125
   wallJumpGravityOnReleaseMultiplier: 1
+  limitedWallJumpAmount: 1
   dashTime: 0.11
   dashSpeed: 40
   timeBtwDashesOnGround: 0.225
   resetDashOnWallSlide: 1
-  numberOfDashes: 2
+  numberOfDashes: 1
   dashDiagonallyBias: 0.4
   dashGravityOnReleaseMultiplier: 1
   dashTimeForUpwardsCancel: 0.027

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
+    [SerializeField]
     private MenuManager theMenuManager;
 
     public void Update()
@@ -14,6 +15,8 @@ public class PauseManager : MonoBehaviour
     }
     public void GoToMainMenu(string theMainMenuSection)
     {
+        Debug.Log("Did Function");
         theMenuManager.ReturnToMainMenu(theMainMenuSection);
+        Debug.Log("Finished Function");
     }
 }

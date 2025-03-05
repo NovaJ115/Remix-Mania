@@ -13,10 +13,14 @@ public class DeathBox : MonoBehaviour
     {
         if(other.gameObject == GameObject.FindWithTag("Body"))
         {
-            deathNoise.Play();
-            deathScreen.SetActive(true);
-            GameObject.FindWithTag("Player").SetActive(false);
+            Lose();
             Debug.Log("EnteredDeathBox");
         }
+    }
+    public void Lose()
+    {
+        deathNoise.Play();
+        deathScreen.SetActive(true);
+        GameObject.FindWithTag("Player").SetActive(false);
     }
 }

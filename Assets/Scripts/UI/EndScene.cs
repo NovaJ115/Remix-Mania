@@ -12,6 +12,7 @@ public class EndScene : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().name;
         music = GameObject.FindWithTag("Music");
+        menuManager = FindFirstObjectByType<MenuManager>();
     }
     public void RemixTheScene()
     {
@@ -36,7 +37,7 @@ public class EndScene : MonoBehaviour
     }
     public void GoToWinScreen()
     {
-        SceneManager.LoadScene("Win");
+        menuManager.ReturnToMainMenu("LevelSelect");
     }
     public void GoToTutorial()
     {

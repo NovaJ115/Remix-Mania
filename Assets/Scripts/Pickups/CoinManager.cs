@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class CoinManager : MonoBehaviour
 {
     public StatRandomizer statRandomizer;
-    public TextMeshProUGUI coinCounter;
+    //public TextMeshProUGUI coinCounter;
     public TextMeshProUGUI coinsNeeded;
     public GameObject pressRToRemix;
     
@@ -25,7 +25,6 @@ public class CoinManager : MonoBehaviour
     public void Start()
     {
         anim.gameObject.SetActive(true);
-        
     }
     public void Update()
     {
@@ -41,8 +40,8 @@ public class CoinManager : MonoBehaviour
         {
             amountNeeded = hardAmountNeeded;
         }
-        coinCounter.text = "Records: " + coinAmount ;
-        coinsNeeded.text = " / " + amountNeeded;
+        
+        coinsNeeded.text = coinAmount + " / " + amountNeeded;
 
         if(coinAmount >= amountNeeded)
         {

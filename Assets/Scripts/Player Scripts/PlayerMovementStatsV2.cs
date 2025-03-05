@@ -56,6 +56,7 @@ public class PlayerMovementStatsV2 : ScriptableObject
     public Vector2 wallJumpDirection = new Vector2(-20f, 6.5f);
     [Range(0f, 1f)] public float wallJumpPostBufferTime = 0.125f;
     [Range(0.01f, 5f)] public float wallJumpGravityOnReleaseMultiplier = 1f;
+    [Range(1, 100)] public int limitedWallJumpAmount = 10;
 
     [Header("Dash")]
     [Range(0f, 1f)] public float dashTime = 0.11f;

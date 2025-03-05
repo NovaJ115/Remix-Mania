@@ -11,7 +11,7 @@ public class TextBoxDialogue : MonoBehaviour
     public Color nameColor;
     public Color dialogueColor;
     [SerializeField]
-    private Dialogue dialogue;
+    public Dialogue dialogue;
     [SerializeField]
     private UniversalDialogueManager dialogueManager;
     [Header("Portrait Settings")]
@@ -32,7 +32,10 @@ public class TextBoxDialogue : MonoBehaviour
     
     public void Start()
     {
-        textBox.SetActive(false);
+        if(textBox != null)
+        {
+            textBox.SetActive(false);
+        }
         portaitBGColor.a = 1;
         nameColor.a = 1;
         dialogueColor.a = 1;
@@ -40,16 +43,25 @@ public class TextBoxDialogue : MonoBehaviour
 
     public void StartDialogue()
     {
-        textBox.SetActive(true);
+        if(textBox != null)
+        {
+            textBox.SetActive(true);
+        }
         dialogueManager.StartDialogue(dialogue);
-        animator.SetBool("Start", true);
+        if(animator != null)
+        {
+            animator.SetBool("Start", true);
+        }
     }
 
     public void Update()
     {
         if(dialogueManager.dialogueOver == true)
         {
-            animator.SetBool("End", true);
+            if (animator != null)
+            {
+                animator.SetBool("End", true);
+            } 
         }
         if(portraitBG != null)
         {
@@ -63,21 +75,27 @@ public class TextBoxDialogue : MonoBehaviour
         {
             dialogueManager.nameText.color = nameColor;
         }
-        
+
         //ELEMENT 0
         if (textBoxType == TextBoxType.NameAndPortrait)
         {
-            styleVariants[0].gameObject.SetActive(true);
+            //styleVariants[0].gameObject.SetActive(true);
             dialogueManager.nameText = styleVariants[0].nameTextObject;
             dialogueManager.dialogueText = styleVariants[0].dialogueTextObject;
-            portrait = styleVariants[0].portraitImage;
-            portraitBG = styleVariants[0].portraitBGImage;
+            if(portrait != null)
+            {
+                portrait = styleVariants[0].portraitImage;
+            }
+            if(portraitBG != null)
+            {
+                portraitBG = styleVariants[0].portraitBGImage;
+            }
         }
         else
         {
             styleVariants[0].gameObject.SetActive(false);
         }
-
+        /*
         //ELEMENT 1
         if (textBoxType == TextBoxType.JustName)
         {
@@ -87,7 +105,11 @@ public class TextBoxDialogue : MonoBehaviour
         }
         else
         {
-            styleVariants[1].gameObject.SetActive(false);
+            if(styleVariants[1] != null)
+            {
+                styleVariants[1].gameObject.SetActive(false);
+            }
+            
         }
 
         //ELEMENT 2
@@ -101,7 +123,11 @@ public class TextBoxDialogue : MonoBehaviour
         }
         else
         {
-            styleVariants[2].gameObject.SetActive(false);
+            if (styleVariants[2])
+            {
+                styleVariants[2].gameObject.SetActive(false);
+            }
+            
         }
 
         //ELEMENT 3
@@ -113,10 +139,13 @@ public class TextBoxDialogue : MonoBehaviour
         }
         else
         {
-            styleVariants[3].gameObject.SetActive(false);
+            if (styleVariants[3])
+            {
+                styleVariants[3].gameObject.SetActive(false);
+            }
+            
         }
-
-
+        */
     }
 
 }

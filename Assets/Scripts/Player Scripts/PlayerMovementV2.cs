@@ -22,6 +22,10 @@ public class PlayerMovementV2 : MonoBehaviour
     [SerializeField] private ParticleSystem speedParticles;
     [SerializeField] private GameObject dashParticles;
     [SerializeField] private AudioSource dashSound;
+    [SerializeField] private AudioSource stepSound1;
+    [SerializeField] private AudioSource stepSound2;
+    [SerializeField] private AudioSource wallSlideSound;
+    [SerializeField] private AudioSource wallGrabSound;
 
     [Header("Height Tracker")]
     [SerializeField] private Transform heightTracker;
@@ -36,7 +40,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     //movement vars
     public Vector2 horizontalVelocity { get; private set; }
-    private bool isFacingRight;
+    public bool isFacingRight;
 
     //collision check vars
     private RaycastHit2D groundHit;
@@ -83,6 +87,10 @@ public class PlayerMovementV2 : MonoBehaviour
     private float timePastWallJumpApexThreshold;
     private bool isPastWallJumpApexThreshold;
 
+    public bool isLimitedWallJumps;
+
+    public bool isReverseWallSlide;
+    public float increasedGravityCounterAmount = 1;
     //dash vars
     private bool isDashing;
     private bool isAirDashing;
@@ -108,8 +116,6 @@ public class PlayerMovementV2 : MonoBehaviour
         statRandomizer = FindFirstObjectByType<StatRandomizer>();
         trailRenderer.emitting = false;
     }
-    
-
     private void Update()
     {
         CountTimers();
@@ -122,7 +128,6 @@ public class PlayerMovementV2 : MonoBehaviour
         JumpCounter();
         //ResetJumpedThisFrame();
     }
-
     private void FixedUpdate()
     {
         //Debug.Log(numberOfJumpsUsed);
@@ -133,7 +138,6 @@ public class PlayerMovementV2 : MonoBehaviour
         WallSlide();
         WallJump();
         Dash();
-
         if (isGrounded)
         {
             Move(moveStats.groundAcceleration, moveStats.groundDeceleration, InputManager.movement);
@@ -152,11 +156,9 @@ public class PlayerMovementV2 : MonoBehaviour
                 Move(moveStats.airAcceleration, moveStats.airDeceleration, InputManager.movement);
             }
         }
-
         ApplyVelocity();
+        
     }
-
-
     private void OnDrawGizmos()
     {
         if (moveStats.showWalkJumpArc)
@@ -203,6 +205,12 @@ public class PlayerMovementV2 : MonoBehaviour
         }
         
     }
+    #region Bounce Pad
+    public void BouncePad(float velocity)
+    {
+        ChangeVerticalVelocity(velocity);
+    }
+    #endregion
 
     #region Fall and Land Checks
 
@@ -217,6 +225,7 @@ public class PlayerMovementV2 : MonoBehaviour
                 trailRenderer.emitting = true;
                 anim.ResetTrigger("land");
                 anim.SetTrigger("fall");
+                
             }
 
             IncrementVerticalVelocity(moveStats.gravity * Time.fixedDeltaTime);
@@ -266,7 +275,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     #endregion
 
-    #region movement
+    #region Movement
 
     private void Move(float acceleration, float deceleration, Vector2 moveInput)
     {
@@ -360,7 +369,7 @@ public class PlayerMovementV2 : MonoBehaviour
         //Debug.Log(isFacingRight);
     }
 
-    private void Turn(bool turnRight)
+    public void Turn(bool turnRight)
     {
         if (turnRight)
         {
@@ -381,10 +390,26 @@ public class PlayerMovementV2 : MonoBehaviour
 
     public void JumpCounter()
     {
-        
+        //Debug.Log(numberOfJumpsUsed);
         if(jumpCounterText != null && jumpIcon != null)
         {
             int jumpsLeft = (moveStats.numberOfJumpsAllowed - numberOfJumpsUsed);
+            
+            if (isWallSliding)
+            {
+                if(jumpsLeft <= 0)
+                {
+                    jumpsLeft = 1;
+                }
+            }
+            if(jumpsLeft == moveStats.numberOfJumpsAllowed && isFalling)
+            {
+                jumpsLeft = jumpsLeft - 1;
+            }
+            if (jumpsLeft < 0)
+            {
+                jumpsLeft = 0;
+            }
             jumpCounterText.text = "" + jumpsLeft;
             if (jumpsLeft == moveStats.numberOfJumpsAllowed)
             {
@@ -512,6 +537,7 @@ public class PlayerMovementV2 : MonoBehaviour
         trailRenderer.emitting = true;
 
         Instantiate(particlesToSpawn, particleSpawnTransform.position, Quaternion.identity);
+        Instantiate(Resources.Load("JumpSFX"));
     }
 
     private void Jump()
@@ -630,6 +656,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
                 isWallSlideFalling = false;
                 isWallSliding = true;
+                
 
                 anim.SetBool("isWallSliding", true);
 
@@ -637,6 +664,7 @@ public class PlayerMovementV2 : MonoBehaviour
                 {
                     numberOfJumpsUsed = 0;
                 }
+                
             }
         }
 
@@ -656,7 +684,29 @@ public class PlayerMovementV2 : MonoBehaviour
     {
         if (isWallSliding)
         {
-            ChangeVerticalVelocity(Mathf.Lerp(verticalVelocity, -moveStats.wallSlideSpeed, moveStats.wallSlideDecelerationSpeed * Time.fixedDeltaTime));
+            if (!isReverseWallSlide)
+            {
+                ChangeVerticalVelocity(Mathf.Lerp(verticalVelocity, -moveStats.wallSlideSpeed, moveStats.wallSlideDecelerationSpeed * Time.fixedDeltaTime));
+            }
+            else
+            {
+                if (statRandomizer.isIncreasedGravity)
+                {
+                    ChangeVerticalVelocity(Mathf.Lerp(verticalVelocity, moveStats.wallSlideSpeed * increasedGravityCounterAmount, moveStats.wallSlideDecelerationSpeed * Time.fixedDeltaTime));
+                    //Debug.Log("Is Working");
+                }
+                else
+                {
+                    ChangeVerticalVelocity(Mathf.Lerp(verticalVelocity, moveStats.wallSlideSpeed, moveStats.wallSlideDecelerationSpeed * Time.fixedDeltaTime));
+                }
+                
+            }
+            
+            
+        }
+        else
+        {
+            wallSlideSound.Stop();
         }
     }
 
@@ -812,14 +862,53 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void InitiateWallJump(GameObject particlesToSpawn = null)
     {
-        if (canWallSlide)
+        //Limited Wall Jumps Is Enabled
+        if (isLimitedWallJumps && canWallSlide)
+        {
+            
+            if(statRandomizer.currentWallJumpsLeft > 0)
+            {
+                if (!isWallJumping)
+                {
+                    isWallJumping = true;
+                    useWallJumpMoveStats = true;
+                }
+
+                StopWallSliding();
+
+                ResetJumpValues();
+                wallJumpTime = 0f;
+                ChangeVerticalVelocity(moveStats.initialWallJumpVelocity);
+
+                int dirMultiplier = 0;
+                Vector2 hitDir = lastWallHit.collider.ClosestPoint(bodyColl.bounds.center);
+
+                if (hitDir.x > transform.position.x)
+                {
+                    dirMultiplier = -1;
+                }
+                else { dirMultiplier = 1; }
+
+                horizontalVelocity = new Vector2((Mathf.Abs(moveStats.wallJumpDirection.x) * dirMultiplier), 0f);
+
+                //FX
+                anim.SetTrigger("jump");
+                anim.ResetTrigger("land");
+                trailRenderer.emitting = true;
+                Instantiate(Resources.Load("JumpSFX"));
+                //Instantiate(particlesToSpawn, particleSpawnTransform.position, Quaternion.identity);
+                statRandomizer.currentWallJumpsLeft -= 1;
+            }
+        }
+        //Limited Wall Jumps Is Disabled
+        if (!isLimitedWallJumps && canWallSlide)
         {
             if (!isWallJumping)
             {
                 isWallJumping = true;
                 useWallJumpMoveStats = true;
             }
-
+            
             StopWallSliding();
 
             ResetJumpValues();
@@ -841,7 +930,7 @@ public class PlayerMovementV2 : MonoBehaviour
             anim.SetTrigger("jump");
             anim.ResetTrigger("land");
             trailRenderer.emitting = true;
-
+            Instantiate(Resources.Load("JumpSFX"));
             //Instantiate(particlesToSpawn, particleSpawnTransform.position, Quaternion.identity);
         }
 
@@ -1282,6 +1371,27 @@ public class PlayerMovementV2 : MonoBehaviour
         }
     }
 
+
+    #endregion
+
+    #region Audio
+
+    public void PlayStep1()
+    {
+        stepSound1.Play();
+    }
+    public void PlayStep2()
+    {
+        stepSound2.Play();
+    }
+    public void PlayWallSlide()
+    {
+        wallSlideSound.Play();
+    }
+    public void PlayWallGrab()
+    {
+        wallGrabSound.Play();
+    }
 
     #endregion
 }

@@ -19,20 +19,20 @@ public class Timer : MonoBehaviour
             {
                 elapsedTime += Time.deltaTime;
             }
-            if (SceneManager.GetActiveScene().name == "Level1")
+            if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Level2")
             {
                 gameIsOn = true;
-                timerText.gameObject.SetActive(true);
+                timerText.transform.parent.gameObject.SetActive(true);
             }
             else
             {
                 gameIsOn = false;
-                timerText.gameObject.SetActive(false);
+                timerText.transform.parent.gameObject.SetActive(false);
             }
         }
         else
         {
-            timerText.gameObject.SetActive(false);
+            timerText.transform.parent.gameObject.SetActive(false);
         }
         
         
@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
 
             //Debug.Log("OnWinScreen");
         }
-        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "MainMenuV2")
+        if (SceneManager.GetActiveScene().name == "MainMenuV2")
         {
             elapsedTime = 0;
         }
