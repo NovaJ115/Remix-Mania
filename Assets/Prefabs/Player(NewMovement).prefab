@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: 3031549566020588334}
   - component: {fileID: 2415535142057806546}
   - component: {fileID: 6894953952778262574}
+  - component: {fileID: 1258030887760763100}
   m_Layer: 0
   m_Name: Player(NewMovement)
   m_TagString: Player
@@ -1430,8 +1431,13 @@ MonoBehaviour:
   canRun: 0
   canDash: 0
   canWallSlide: 0
+  isFacingRight: 0
   isGrounded: 0
   isJumping: 0
+  timesJumped: 0
+  isLimitedWallJumps: 0
+  isReverseWallSlide: 0
+  increasedGravityCounterAmount: 1
 --- !u!95 &6894953952778262574
 Animator:
   serializedVersion: 7
@@ -1454,6 +1460,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1258030887760763100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648091060467858418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b562abe1df3e43e46898ede2c1f947d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 2415535142057806546}
 --- !u!1 &8785037126464924952
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class MusicRandomizer : MonoBehaviour
     public int chanceForSecretSong;
     public TextMeshProUGUI nowPlayingText;
     public StatRandomizer statRandomizer;
+    public int extremeSongNumber;
+    public int secretSongNumber;
 
     
     public void PlayRandomMusic()
@@ -17,7 +19,7 @@ public class MusicRandomizer : MonoBehaviour
             var secretSong = Random.Range(0, 100);
             if (secretSong > 100 - chanceForSecretSong)
             {
-                randomNumber = 4;
+                randomNumber = secretSongNumber;
             }
             else
             {
@@ -26,11 +28,11 @@ public class MusicRandomizer : MonoBehaviour
         }
         else
         {
-            randomNumber = 3;
+            randomNumber = extremeSongNumber;
         }
         musicVariants[randomNumber].Play();
         nowPlayingText.text = musicVariants[randomNumber].name;
-        Debug.Log(randomNumber);
+        //Debug.Log(randomNumber);
     }
     public void StopMusic()
     {

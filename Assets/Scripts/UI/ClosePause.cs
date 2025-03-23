@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ClosePause : MonoBehaviour
 {
@@ -7,7 +8,13 @@ public class ClosePause : MonoBehaviour
     public GameObject pausePanel;
     public GameObject settingsPanel;
     public bool pauseOpen = false;
-    
+    public UISelectionManager selectionManager;
+
+    public void Start()
+    {
+        selectionManager = FindFirstObjectByType<UISelectionManager>();
+    }
+
     private void Update()
     {
         if (pauseMenu != null && pauseMenu.activeInHierarchy == true)
@@ -30,6 +37,7 @@ public class ClosePause : MonoBehaviour
         pausePanel.SetActive(true);
         settingsPanel.SetActive(false);
         pauseMenu.transform.parent.gameObject.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(selectionManager.inGamePauseFirstSelected) ;
     }
     public void PauseIsOpen()
     {

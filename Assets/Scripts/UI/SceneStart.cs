@@ -12,7 +12,7 @@ public class SceneStart : MonoBehaviour
 
     public void PlaySceneStartSound()
     {
-        if(SceneManager.GetActiveScene().name == "Level1")
+        if(SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Level2")
         {
             music.GetComponent<MusicRandomizer>().PlayRandomMusic();
         }

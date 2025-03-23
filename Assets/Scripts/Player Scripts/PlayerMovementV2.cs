@@ -60,6 +60,7 @@ public class PlayerMovementV2 : MonoBehaviour
     private float fastFallTime;
     private float fastFallReleaseSpeed;
     private int numberOfJumpsUsed;
+    public int timesJumped;
     //apex vars
     private float apexPoint;
     private float timePastApexThreshold;
@@ -501,7 +502,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
             isFastFalling = false;
             InitiateJump(1, secondJumpParticles);
-
+            
             if (isDashFastFalling)
             {
                 isDashFastFalling = false;
@@ -515,6 +516,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
             isFastFalling = false;
             InitiateJump(2, jumpParticles);
+            
         }
     }
 
@@ -524,9 +526,9 @@ public class PlayerMovementV2 : MonoBehaviour
         {
             isJumping = true;
         }
-
+        
         ResetWallJumpValues();
-
+        timesJumped += 1;
         jumpBufferTimer = 0f;
         numberOfJumpsUsed += theNumberOfJumpsUsed;
         ChangeVerticalVelocity(moveStats.initialJumpVelocity);
@@ -761,6 +763,7 @@ public class PlayerMovementV2 : MonoBehaviour
             if (InputManager.jumpWasPressed && wallJumpPostBufferTimer > 0f && canWallSlide)
             {
                 InitiateWallJump();
+                timesJumped += 1;
             }
         }
         
@@ -862,6 +865,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void InitiateWallJump(GameObject particlesToSpawn = null)
     {
+
         //Limited Wall Jumps Is Enabled
         if (isLimitedWallJumps && canWallSlide)
         {
@@ -873,7 +877,7 @@ public class PlayerMovementV2 : MonoBehaviour
                     isWallJumping = true;
                     useWallJumpMoveStats = true;
                 }
-
+                
                 StopWallSliding();
 
                 ResetJumpValues();

@@ -16,6 +16,11 @@ public class DoorManager : MonoBehaviour
     {
         if(isInDoor && InputManager.interactWasPressed)
         {
+            if(sceneToTransitionTo == "MainMenuV2")
+            {
+                PlayerPrefs.SetString("MainMenuSection", "Main");
+            }
+            fadeToBlack.gameObject.SetActive(true);
             fadeToBlack.GetComponent<EnterBuilding>().theSceneName = sceneToTransitionTo;
             PlayerPrefs.SetInt("Progress", 0);
             fadeToBlack.Play("FadeToBlackScreen");

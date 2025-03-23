@@ -182,11 +182,11 @@ public class StatRandomizer : MonoBehaviour
                 }
                 if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockRemix1)
                 {
-                    limitedWallJumpsEnabled = true;
+                    reverseWallSlideEnabled = true;
                 }
                 if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockRemix2)
                 {
-                    reverseWallSlideEnabled = true;
+                    limitedWallJumpsEnabled = true;
                 }
                 if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockRemix3)
                 {
@@ -385,7 +385,7 @@ public class StatRandomizer : MonoBehaviour
                 playerMovement.isLimitedWallJumps = true;
                 currentWallJumpsLeft = Random.Range(minWallJumps, maxWallJumps + 1);
                 randomStats.limitedWallJumpAmount = currentWallJumpsLeft;
-                variable01Txt.text = "Wall Jumps Left: " + currentWallJumpsLeft;
+                variable02Txt.text = "Wall Jumps Left: " + currentWallJumpsLeft;
                 if (lock01 != null)
                 {
                     lock01.SetActive(false);
@@ -395,9 +395,9 @@ public class StatRandomizer : MonoBehaviour
             {
 
                 playerMovement.isLimitedWallJumps = false;
-                if (variable01Txt != null)
+                if (variable02Txt != null)
                 {
-                    variable01Txt.gameObject.SetActive(false);
+                    variable02Txt.gameObject.SetActive(false);
                 }
                 if (lock01 != null)
                 {
@@ -416,23 +416,23 @@ public class StatRandomizer : MonoBehaviour
                 {
                     isReverseWallSlide = true;
                     playerMovement.isReverseWallSlide = true;
-                    variable02Txt.text = "Reverse Wall Slide: ON";
-                    variable02Txt.color = Color.green;
+                    variable01Txt.text = "Reverse Wall Slide: ON";
+                    variable01Txt.color = Color.green;
                 }
                 else
                 {
                     playerMovement.isReverseWallSlide = false;
-                    variable02Txt.text = "Reverse Wall Slide: OFF";
-                    variable02Txt.color = Color.red;
+                    variable01Txt.text = "Reverse Wall Slide: OFF";
+                    variable01Txt.color = Color.red;
                 }
 
             }
             else
             {
                 playerMovement.isReverseWallSlide = false;
-                if (variable02Txt != null)
+                if (variable01Txt != null)
                 {
-                    variable02Txt.gameObject.SetActive(false);
+                    variable01Txt.gameObject.SetActive(false);
                 }
                 if (lock02 != null)
                 {
@@ -519,7 +519,7 @@ public class StatRandomizer : MonoBehaviour
                 {
                     currentWallJumpsLeft = 0;
                 }
-                variable01Txt.text = "Wall Jumps Left: " + currentWallJumpsLeft;
+                variable02Txt.text = "Wall Jumps Left: " + currentWallJumpsLeft;
                 if (lock01 != null)
                 {
                     lock01.SetActive(false);

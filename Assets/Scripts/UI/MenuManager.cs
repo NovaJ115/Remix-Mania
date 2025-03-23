@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MenuManager : MonoBehaviour
     public bool startOnLevelSelectCam;
 
     public GameObject mainMenuCamera;
+
+    
 
     public void Start()
     {
@@ -51,6 +54,7 @@ public class MenuManager : MonoBehaviour
                 InputManager.playerInput.currentActionMap.Enable();
             }
         }
+        
     }
     public void ReturnToMainMenu(string mainMenuSection)
     {
@@ -67,7 +71,6 @@ public class MenuManager : MonoBehaviour
         }
         
     }
-    
     public void RestartLevel()
     {
         SceneManager.LoadScene(currentScene);
@@ -100,9 +103,12 @@ public class MenuManager : MonoBehaviour
         //SceneManager.LoadScene("Level1");
     }
 
+    
+
     public void Update()
     {
         currentScene = SceneManager.GetActiveScene().name;
         //Debug.Log(InputManager.playerInput.currentActionMap.enabled);
     }
+
 }
