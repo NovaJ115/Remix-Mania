@@ -8,7 +8,7 @@ public class MusicRandomizer : MonoBehaviour
     public int chanceForSecretSong;
     public TextMeshProUGUI nowPlayingText;
     public StatRandomizer statRandomizer;
-    public int extremeSongNumber;
+    public int finalRemixSongNumber;
     public int secretSongNumber;
 
     
@@ -28,7 +28,11 @@ public class MusicRandomizer : MonoBehaviour
         }
         else
         {
-            randomNumber = extremeSongNumber;
+            randomNumber = finalRemixSongNumber;
+        }
+        if(PlayerPrefs.GetInt("Progress") == statRandomizer.remixManager.completionAmount - 1)
+        {
+            randomNumber = finalRemixSongNumber;
         }
         musicVariants[randomNumber].Play();
         nowPlayingText.text = musicVariants[randomNumber].name;

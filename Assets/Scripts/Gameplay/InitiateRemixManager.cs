@@ -21,11 +21,14 @@ public class InitiateRemixManager : MonoBehaviour
     public float lvl1HighScoreTime;
     public float lvl2HighScoreTime;
 
+    [Header("Tutorial Variables")]
+    [SerializeField] private GameObject textSet1;
+    [SerializeField] private GameObject textSet2;
+
     [Header("Lvl 2 Variables")]
     [SerializeField] private GameObject wallJumpText;
 
     private bool cooldown = false;
-    private string theFinalTime;
 
     EasyFileSave theTimerData;
 
@@ -44,129 +47,148 @@ public class InitiateRemixManager : MonoBehaviour
     }
     void Update()
     {
-        
-        timer = FindFirstObjectByType<Timer>();
-        //Level 1
-        if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level1" && cooldown == false)
+        if (theTimerData.Load())
         {
-            
-            Invoke("ResetCooldown", 5.0f);
-            cooldown = true;
-            if (PlayerPrefs.GetInt("Progress") == completionAmount-1)
+            Debug.Log("With GetFloat : " + theTimerData.GetFloat("Level_01_Time"));
+            Debug.Log("Without GetFloat : " + theTimerData.Load("Level_01_Time"));
+            timer = FindFirstObjectByType<Timer>();
+            //Level 1
+            if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level1" && cooldown == false)
             {
-                lvl1HighScoreTime = timer.elapsedTime;
 
-                theTimerData.Add("Level_01_Time", lvl1HighScoreTime);
-                theTimerData.Save();
-                /*
-                
-                TimerData data = SaveSystem.LoadTimer();
-                float highScore = data.lvl1HighScore;
-                if (lvl1HighScoreTime < highScore)
+                Invoke("ResetCooldown", 5.0f);
+                cooldown = true;
+                if (PlayerPrefs.GetInt("Progress") == completionAmount - 1)
                 {
-                    SaveSystem.SaveTimer(this);
-                }
-                WriteOutTime();
-                */
-                PlayerPrefs.SetString("Lvl1BestTime", theFinalTime);
-                coinManager.anim.SetBool("PressedRForWin", true);
-            }
-            else
-            {
-                if (PlayerPrefs.GetInt("Progress") == completionAmount-2)
-                {
-                    coinManager.anim.SetBool("PressedRForFinalRemix", true);
-                    int newProgress = PlayerPrefs.GetInt("Progress") + 1;
-                    PlayerPrefs.SetInt("Progress", newProgress);
+
+                    lvl1HighScoreTime = timer.elapsedTime;
+                    if (theTimerData.GetFloat("Level_01_Time") == 0)
+                    {
+                        theTimerData.Add("Level_01_Time", lvl1HighScoreTime);
+                        theTimerData.Append();
+                        Debug.Log("Got First New Time");
+                    }
+                    else if (lvl1HighScoreTime < theTimerData.GetFloat("Level_01_Time"))
+                    {
+                        theTimerData.Add("Level_01_Time", lvl1HighScoreTime);
+                        theTimerData.Append();
+                        Debug.Log("Got New Best Time");
+                    }
+                    coinManager.anim.SetBool("PressedRForWin", true);
                 }
                 else
                 {
-                    coinManager.anim.SetBool("PressedR", true);
-                    int newProgress = PlayerPrefs.GetInt("Progress") + 1;
-                    PlayerPrefs.SetInt("Progress", newProgress);
+                    if (PlayerPrefs.GetInt("Progress") == completionAmount - 2)
+                    {
+                        coinManager.anim.SetBool("PressedRForFinalRemix", true);
+                        int newProgress = PlayerPrefs.GetInt("Progress") + 1;
+                        PlayerPrefs.SetInt("Progress", newProgress);
+                    }
+                    else
+                    {
+                        coinManager.anim.SetBool("PressedR", true);
+                        int newProgress = PlayerPrefs.GetInt("Progress") + 1;
+                        PlayerPrefs.SetInt("Progress", newProgress);
+                    }
                 }
             }
-        }
-        //Tutorial
-        if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Tutorial")
-        {
-            coinManager.anim.SetBool("PressedRInTutorial", true);
-        }
-        //Level 2
-        if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level2" && cooldown == false)
-        {
-
-            Invoke("ResetCooldown", 5.0f);
-            cooldown = true;
-            if (PlayerPrefs.GetInt("Progress") == completionAmount - 1)
+            //Tutorial
+            if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Tutorial" && cooldown == false)
             {
-                /*
-                lvl2HighScoreTime = timer.elapsedTime;
-                TimerData data = SaveSystem.LoadTimer();
-                float highScore2 = data.lvl2HighScore;
-                if (lvl2HighScoreTime < highScore2)
-                {
-                    SaveSystem.SaveTimer(this);
-                }else if (highScore2 == 0)
-                {
-                    SaveSystem.SaveTimer(this);
-                }
-                WriteOutTime();
-                PlayerPrefs.SetString("Lvl2BestTime", theFinalTime);
-                */
-                coinManager.anim.SetBool("PressedRForWin", true);
-            }
-            else
-            {
+                Invoke("ResetCooldown", 5.0f);
+                cooldown = true;
                 if (PlayerPrefs.GetInt("Progress") == completionAmount - 2)
                 {
-                    coinManager.anim.SetBool("PressedRForFinalRemix", true);
-                    int newProgress = PlayerPrefs.GetInt("Progress") + 1;
-                    PlayerPrefs.SetInt("Progress", newProgress);
-                }
-                else
-                {
                     coinManager.anim.SetBool("PressedR", true);
                     int newProgress = PlayerPrefs.GetInt("Progress") + 1;
                     PlayerPrefs.SetInt("Progress", newProgress);
                 }
-            }
+                if (PlayerPrefs.GetInt("Progress") == completionAmount - 1)
+                {
+                    coinManager.anim.SetBool("PressedRInTutorial", true);
+                }
 
-        }
-        if(wallJumpText != null)
-        {
-            if (PlayerPrefs.GetInt("Progress") == 0)
-            {
-                wallJumpText.SetActive(true);
             }
-            else
+            if (textSet1 != null && textSet2 != null)
             {
-                wallJumpText.SetActive(false);
+                if (PlayerPrefs.GetInt("Progress") == 0)
+                {
+                    textSet1.SetActive(true);
+                    textSet2.SetActive(false);
+                }
+                else
+                {
+                    textSet1.SetActive(false);
+                    textSet2.SetActive(true);
+                }
+            }
+            //Level 2
+            if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level2" && cooldown == false)
+            {
+
+                Invoke("ResetCooldown", 5.0f);
+                cooldown = true;
+                if (PlayerPrefs.GetInt("Progress") == completionAmount - 1)
+                {
+                    lvl2HighScoreTime = timer.elapsedTime;
+                    if (theTimerData.GetFloat("Level_02_Time") == 0)
+                    {
+                        theTimerData.Add("Level_02_Time", lvl2HighScoreTime);
+                        theTimerData.Append();
+                        Debug.Log("Got First New Time");
+                    }
+                    else if (lvl2HighScoreTime < theTimerData.GetFloat("Level_02_Time"))
+                    {
+                        theTimerData.Add("Level_02_Time", lvl2HighScoreTime);
+                        theTimerData.Append();
+                        Debug.Log("Got New Best Time");
+                    }
+                    coinManager.anim.SetBool("PressedRForWin", true);
+                }
+                else
+                {
+                    if (PlayerPrefs.GetInt("Progress") == completionAmount - 2)
+                    {
+                        coinManager.anim.SetBool("PressedRForFinalRemix", true);
+                        int newProgress = PlayerPrefs.GetInt("Progress") + 1;
+                        PlayerPrefs.SetInt("Progress", newProgress);
+                    }
+                    else
+                    {
+                        coinManager.anim.SetBool("PressedR", true);
+                        int newProgress = PlayerPrefs.GetInt("Progress") + 1;
+                        PlayerPrefs.SetInt("Progress", newProgress);
+                    }
+                }
+
+            }
+            if (wallJumpText != null)
+            {
+                if (PlayerPrefs.GetInt("Progress") == 0)
+                {
+                    wallJumpText.SetActive(true);
+                }
+                else
+                {
+                    wallJumpText.SetActive(false);
+                }
+            }
+            //Level 3
+            if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level3" && cooldown == false)
+            {
+                Invoke("ResetCooldown", 5.0f);
+                cooldown = true;
+                coinManager.anim.SetBool("PressedR", true);
+                int newProgress = PlayerPrefs.GetInt("Progress") + 1;
+                PlayerPrefs.SetInt("Progress", newProgress);
             }
         }
         
-        //Level 3
-        if (coinManager.pressRToRemix.activeInHierarchy == true && InputManager.remixWasPressed && SceneManager.GetActiveScene().name == "Level3" && cooldown == false)
-        {
-            Invoke("ResetCooldown", 5.0f);
-            cooldown = true;
-            coinManager.anim.SetBool("PressedR", true);
-            int newProgress = PlayerPrefs.GetInt("Progress") + 1;
-            PlayerPrefs.SetInt("Progress", newProgress);
-        }
     }
     public void ResetCooldown()
     {
         cooldown = false;
     }
 
-    public void WriteOutTime()
-    {
-        int minutes = Mathf.FloorToInt(timer.elapsedTime / 60);
-        int seconds = Mathf.FloorToInt(timer.elapsedTime % 60);
-        int milliseconds = Mathf.FloorToInt(timer.elapsedTime * 1000) % 1000;
-        string theMilliseconds = milliseconds.ToString();
-        theFinalTime = minutes.ToString("00") + ":" + seconds.ToString("00") + "." + theMilliseconds.Remove(theMilliseconds.Length - 1);
-    }
 
 }

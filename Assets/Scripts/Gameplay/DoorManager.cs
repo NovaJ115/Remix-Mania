@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 public class DoorManager : MonoBehaviour
 {
     public GameObject textAboveDoor;
@@ -7,9 +8,11 @@ public class DoorManager : MonoBehaviour
     public string sceneToTransitionTo;
 
     private bool isInDoor;
+    private PlayerInput playerInput;
     void Start()
     {
         textAboveDoor.SetActive(false);
+        playerInput = FindFirstObjectByType<PlayerInput>();
     }
 
     void Update()
@@ -27,6 +30,14 @@ public class DoorManager : MonoBehaviour
             Debug.Log("Player Hit F");
             this.gameObject.SetActive(false);
             InputSystem.DisableAllEnabledActions();
+        }
+        if (playerInput.currentControlScheme == "Keyboard")
+        {
+            textAboveDoor.GetComponent<TextMeshProUGUI>().text = "Press <sprite name=f>";
+        }
+        if (playerInput.currentControlScheme == "Gamepad")
+        {
+            textAboveDoor.GetComponent<TextMeshProUGUI>().text = "Press <sprite name=fw>";
         }
     }
     public void OnTriggerEnter2D(Collider2D other)

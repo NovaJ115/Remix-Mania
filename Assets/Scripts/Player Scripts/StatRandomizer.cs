@@ -20,6 +20,7 @@ public class StatRandomizer : MonoBehaviour
     public int maxJumps;
     public int minWallJumps;
     public int maxWallJumps;
+    public int extremeWallJumpsLeft;
     public int baseSpeed;
     public int baseJumps;
     public int gravityScaleAmount;
@@ -137,8 +138,20 @@ public class StatRandomizer : MonoBehaviour
         }
 
         #region SetProgressionBools
+        //Tutorial
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            if (remixManager != null)
+            {
+                if (PlayerPrefs.GetInt("Progress") >= remixManager.amountToUnlockSpeedAndJump)
+                {
+                    speedEnabled = true;
+                    jumpsEnabled = true;
+                }
+            }
+        }
         //Level 1
-        if(SceneManager.GetActiveScene().name == "Level1")
+        if (SceneManager.GetActiveScene().name == "Level1")
         {
             if (remixManager != null)
             {
@@ -198,7 +211,8 @@ public class StatRandomizer : MonoBehaviour
                 }
                 if (PlayerPrefs.GetInt("Progress") == remixManager.completionAmount - 1)
                 {
-                    
+                    ExtremeModeEnabled();
+                    isExtremeModeEnabled = true;
                 }
             }
         }
@@ -383,7 +397,15 @@ public class StatRandomizer : MonoBehaviour
             if (limitedWallJumpsEnabled)
             {
                 playerMovement.isLimitedWallJumps = true;
-                currentWallJumpsLeft = Random.Range(minWallJumps, maxWallJumps + 1);
+                if(isExtremeModeEnabled != true)
+                {
+                    currentWallJumpsLeft = Random.Range(minWallJumps, maxWallJumps + 1);
+                }
+                else
+                {
+                    currentWallJumpsLeft = extremeWallJumpsLeft;
+                }
+                
                 randomStats.limitedWallJumpAmount = currentWallJumpsLeft;
                 variable02Txt.text = "Wall Jumps Left: " + currentWallJumpsLeft;
                 if (lock01 != null)
@@ -561,23 +583,45 @@ public class StatRandomizer : MonoBehaviour
 
     public void ExtremeModeEnabled()
     {
-        if (isEasyModeEnabled)
+        if(SceneManager.GetActiveScene().name == "Level1")
         {
-            minJumps = 3;
-            maxJumps = 3;
-        }
-        else
-        {
-            jumpsEnabled = false;
-        }
-        speedEnabled = false;
-        
-        invertedControlsEnabled = true;
-        darknessEnabled = true;
-        upsideDownEnabled = true;
-        reverseGravityEnabled = true;
+            if (isEasyModeEnabled)
+            {
+                minJumps = 3;
+                maxJumps = 3;
+            }
+            else
+            {
+                jumpsEnabled = false;
+            }
+            speedEnabled = false;
 
-        currentChanceOfRemixVariable = extremePercent;
+            invertedControlsEnabled = true;
+            darknessEnabled = true;
+            upsideDownEnabled = true;
+            reverseGravityEnabled = true;
+
+            currentChanceOfRemixVariable = extremePercent;
+        }
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            if (isEasyModeEnabled)
+            {
+                minJumps = 3;
+                maxJumps = 3;
+            }
+            else
+            {
+                jumpsEnabled = false;
+            }
+            speedEnabled = false;
+            reverseWallSlideEnabled = false;
+            increasedGravityEnabled = true;
+
+            currentChanceOfRemixVariable = extremePercent;
+        }
+
+
     }
 
     public void EasyModeEnabled()
@@ -596,5 +640,5 @@ public class StatRandomizer : MonoBehaviour
         minJumps = 2;
     }
 
-
+    
 }

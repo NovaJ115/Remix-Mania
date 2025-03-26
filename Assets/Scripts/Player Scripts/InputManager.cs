@@ -91,6 +91,8 @@ public class InputManager : MonoBehaviour
         remixWasPressed = remixAction.WasPressedThisFrame();
 
         interactWasPressed = interactAction.WasPressedThisFrame();
+
+
     }
 
 }
