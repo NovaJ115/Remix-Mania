@@ -38,6 +38,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
+        
         playerInput = GetComponent<PlayerInput>();
         statRandomizer = FindFirstObjectByType<StatRandomizer>();
 

@@ -33,7 +33,7 @@ public class EndScene : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenuV2");
+        menuManager.ReturnToMainMenu("LevelSelect");
     }
     public void GoToWinScreen()
     {

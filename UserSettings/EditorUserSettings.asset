@@ -24,16 +24,16 @@ EditorUserSettings:
       value: 00060652030450595b0d5e2147205b44444e1c2b2d7a25627f7c4535e6e63168
       flags: 0
     RecentlyUsedSceneGuid-5:
-      value: 5057005006505f5f5a0f5a2643215b4415154b78797a74657b7b4d62b4b93761
-      flags: 0
-    RecentlyUsedSceneGuid-6:
       value: 51535651510c0d08580f597411750c44141640792d2b7e637f7a1f6be6b26761
       flags: 0
-    RecentlyUsedSceneGuid-7:
+    RecentlyUsedSceneGuid-6:
       value: 0650575f075451035d0d0a7a407a5a44404f1a732a787f347d704f31e7e2616d
       flags: 0
-    RecentlyUsedSceneGuid-8:
+    RecentlyUsedSceneGuid-7:
       value: 5a5402515201515d5a565a7112210d444f4f1d792e7f20667a7d4b6be6e36139
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5057005006505f5f5a0f5a2643215b4415154b78797a74657b7b4d62b4b93761
       flags: 0
     RecentlyUsedSceneGuid-9:
       value: 535500530353080f59580874167a5d44124e4978287f246829281c62e4b0376a
@@ -46,6 +46,9 @@ EditorUserSettings:
       flags: 0
     UnityEditor.ShaderGraph.InspectorWindow:
       value: 18135939215a0a5004000b0e15254b524c1119263f2d6a722016393ce1eb3d36e5d339f9a5602b2e2c07a37e0901373ae01e0008f707250d171df81a53a541445f9348954a984d4e9341449f954e87af97dbebc2d7f9eec2d1d1b4f3f8dfe8fee6f4b1b9f0f8b290e6edf38e9ccbddc18390ac86d4849394ee839f86e78a8b848c83dd8380d48f8e95cfb9cff8c3f7f2ddf2fdcfccfccaf3c4c8c8ea34e7b27d
+      flags: 0
+    UnityRemoteJoystickSource:
+      value: 2f5e570709
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
